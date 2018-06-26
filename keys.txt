@@ -21,3 +21,6 @@ lsblk
 
 #removing a package
 sudo yum remove git
+
+#removing all directories inside dir
+rm -rf d
