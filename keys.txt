@@ -1,0 +1,26 @@
+user name: alghadhban.duraid
+access key id: AKIAI7UPCAOU36OHJQVA
+secret access key: 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
+
+mysql -h mydb.cg1cwfsoswh0.eu-west-1.rds.amazonaws.com -P 3306 -u db_201400529 -p
+
+sudo yum install mysql
+
+sudo mkfs -t ext4 /dev/xvdf
+sudo mkdir (filename)
+sudo mount /dev/xvdf (created folder)
+
+lsblk 
+
+sudo mkfs -t ext4 /dev/xvdf
+sudo mkdir ali
+sudo mount /dev/xvdf ali
+
+lsblk
+
+
+removing a package
+
+dpkg --list
+
+sudo apt-get --purge remove git
