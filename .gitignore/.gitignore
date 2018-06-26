@@ -1,0 +1,32 @@
+import boto3
+import os
+
+#AWS_ACCESS_kEY_ID = input ('')
+#AWS_ACCESS_kEY_SECRET = input ('')
+#session = boto3.Session(aws_access_key_id= , aws_access_key_secret)
+
+s3 = boto3.resource('s3')
+
+# listing all buckets inside the s3
+#for b in s3.buckets.all():
+#       print(b)
+
+print()
+
+# listing all objects inside the ubuntubackuppoly9 bucket
+#for o in s3.Bucket('ubuntubackuppoly9').objects.all():
+#       print (o)
+
+# uploading specific file
+#s3.Object('ubuntubackuppoly9', 'exam.py').put(Body=open('/home/ec2-user/exam.py','rb'))
+
+
+#uploading all files existed in a direcrory
+path ='/home/ec2-user/duraid'
+list = []
+for x in os.listdir(path):
+        #print(x)
+        list.append(x)
+for abc in list:
+        print(abc)
+        s3.Object('ubuntubackuppoly9', abc).put(Body=open(path + '/' + abc ,'rb'))
