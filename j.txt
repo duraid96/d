@@ -1,0 +1,27 @@
+import boto3
+import os.path
+import sys
+
+#bucket name
+bucket_name = 'backup'
+
+#source directory on ec2
+sourceDir = 'example1'
+
+#source dest directory on s3
+destDir = 'example2'
+
+uploadfilenames = []
+
+for (sourceDir, dirname, filename) in os.walk(sourceDir):
+	uploadfilenames.extend(filename)
+
+def percent_cb (complete, total):
+	sys.stdout.write('.')
+	sys.stdout.flush()
+
+for filename in uploadfilenames:
+	sourcepath = os.path.join(sourceDir + filename)
+	destpath = os.path.join(destDir + filename)
+	print('uploading %s to Amazon s3 bucket %s' % \ sourcepath, bucket_name)
+
