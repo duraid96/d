@@ -1,0 +1,28 @@
+import boto3
+
+#!!!!!  only do this if u dont have awscli
+# the keys can be hard coded
+AWS_ACCESS_KEY_ID = input('enter access key id')
+AWS_ACCESS_KEY_SECRET = input('enter secret access key ')
+session = boto3.Session(aws_access_key_id=AWS_ACCESS_KEY_ID,
+                        aws_secret_access_key=AWS_ACCESS_KEY_SECRET)
+
+
+s3 = session.resource('s3')  #this without awscli (u have to create seassion and give keys)
+#s3 = boto3.resource('s3')   #use this if u have awscli
+
+
+#list the buckets
+for b in s3.buckets.all():
+    print(b)
+
+print()
+#list objects in the bucket
+for o in s3.Bucket('dcm-exam-testing1').objects.all():
+    print(o)
+
+#upload file
+s3.Object('dcm-exam-testing1', 'james.png').put(Body=open('/home/hazeem/Downloads/james.png', 'rb'))
+#download file
+s3.Bucket('dcm-exam-testing1').download_file('james.png', '/home/hazeem/james22.png')
+
